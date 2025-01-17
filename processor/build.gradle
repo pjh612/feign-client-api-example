@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+tasks.register("prepareKotlinBuildScriptModel"){}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'com.google.auto.service:auto-service-annotations:1.1.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
+    annotationProcessor 'com.google.auto.service:auto-service:1.1.1'
+}

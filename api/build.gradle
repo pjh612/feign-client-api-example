@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+tasks.register("prepareKotlinBuildScriptModel") {}
+dependencies {
+    implementation project(':external')
+    annotationProcessor project(':processor')
+    compileOnly project(':processor')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-AexportModulePath=' + project(':external').projectDir]
+    options.compilerArgs += ['-AapplicationName=' + "${project.rootProject.name}-${project.name}"]
+    options.annotationProcessorPath = configurations.annotationProcessor
+}
+
+//tasks.withType(JavaCompile).configureEach {
+//    options.compilerArgs += ['-AexportModulePath=' + project(':external').projectDir]
+//    options.compilerArgs += ['-AapplicationName=' + "${project.rootProject.name}-${project.name}"]
+//}

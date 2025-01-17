@@ -1,0 +1,8 @@
+plugins {
+    id 'idea'
+    id 'java'
+}
+tasks.register("prepareKotlinBuildScriptModel"){}
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'feign-client-apt'
+
+include 'external'
+include 'api'
+include 'processor'
